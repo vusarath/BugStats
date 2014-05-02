@@ -193,8 +193,16 @@ namespace Nara
                 ada.Fill(set);
                 DataTable tables= set.Tables[0];
                 LastRow = tables.Rows.Count;
-                var table = set.Tables[0].AsEnumerable().Where(r => r.Field<double>(colNames[0]) == SNO).First();
-                FillCOl(table.ItemArray);
+                try
+                {
+                    var table = set.Tables[0].AsEnumerable().Where(r => r.Field<double>(colNames[0]) == SNO).First();
+                    FillCOl(table.ItemArray);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                
                 //var table = set.Tables[0].AsEnumerable().Where(r => r.Field<String>("Mode") == "E").Select(ex => ex.Field<String>("Status")).First();
                 
             }
